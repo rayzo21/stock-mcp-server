@@ -169,7 +169,5 @@ def get_technicals(ticker: str) -> str:
 
 
 if __name__ == "__main__":
-    import uvicorn
     port = int(os.environ.get("PORT", 8000))
-    # Use sse transport for broad compatibility
-    uvicorn.run(mcp.sse_app(), host="0.0.0.0", port=port)
+    mcp.run(transport="sse", host="0.0.0.0", port=port)
