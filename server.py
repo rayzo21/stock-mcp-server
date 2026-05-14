@@ -11,8 +11,9 @@ from mcp.server.fastmcp import FastMCP
 
 API_KEY = os.environ.get("ALPHA_VANTAGE_KEY", "N4PODJ9VXOBBL34R")
 BASE_URL = "https://www.alphavantage.co/query"
+PORT = int(os.environ.get("PORT", 8000))
 
-mcp = FastMCP("Stock Technicals")
+mcp = FastMCP("Stock Technicals", host="0.0.0.0", port=PORT)
 
 
 # ── data fetching ──────────────────────────────────────────────────────────────
@@ -169,5 +170,4 @@ def get_technicals(ticker: str) -> str:
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    mcp.run(transport="sse", host="0.0.0.0", port=port)
+    mcp.run(transport="sse")
