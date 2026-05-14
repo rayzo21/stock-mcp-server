@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: stock-mcp-server
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: ALPHA_VANTAGE_KEY
+        value: N4PODJ9VXOBBL34R
+      - key: PORT
+        generateValue: false
